@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage in JS</title>
+</head>
+
+<body>
+    <h1> localStorage in JavaScript</h1>
+    <input type="text" class="input">
+    <button onclick="btn()">Click</button>
+    <ul class="demo">
+
+    </ul>
+    <p class="lists"></p>
+    <script>
+        let userInput = document.querySelector('.input')
+        let itemsList = document.querySelector('.demo');
+
+        function btn() {
+
+
+            if (userInput.value === "") {
+                alert("hey What are you doing man");
+                return false;
+            }
+            // get itemLists
+            acceptItemLists()
+
+            // save localData
+            saveItemsToLocalStorage()
+            // Clear the input value
+            userInput.value = "";
+        }
+
+
+        // store Data in localstorage;
+
+        let items = [];
+        let acceptItemLists = () => {
+
+            let item = userInput.value;
+            items.push(item);
+
+
+            // Create list element
+            let li = document.createElement('li');
+            li.classList.add('todo-item');
+            li.innerHTML = item;
+            itemsList.appendChild(li);
+            // console.log(item)
+
+        }
+
+        function saveItemsToLocalStorage() {
+
+            // Save items to the localStorage using  setItem() method
+            // localStorage.setItem('key','value')
+
+            // in order to be saved, the items array to  local storage, need to convert them into string using the JOSN.stringify() method
+            localStorage.setItem('itemsKey', JSON.stringify(items));
+
+            // To retrieve the item from the localStorage, 
+            localStorage.getItem('itemsKey')
+
+            // When retrieving our data from the localStorage
+            // convert it back to the array using JOSN.parse() method
+            JSON.parse(localStorage.getItem('itemsKey'))
+
+
+            // Dsiplay the data on todo lists
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

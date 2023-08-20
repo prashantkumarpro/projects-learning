@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@1,300&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    min-height: 100vh;
+    background-color: #1a708a;
+
+}
+
+header {
+    font-size: 1rem;
+}
+
+header,
+.todo-container {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.todo-container input,
+.todo-container button {
+    padding: .3rem;
+    font-size: 1rem;
+    border: none;
+    background: white;
+    outline: none;
+    text-transform: capitalize;
+}
+
+.todo-container button {
+    color: #31a1c4;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.todo-container button:hover {
+    background: #31a1c4;
+    color: white;
+}
+
+
+.items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items {
+    min-width: 28%;
+    list-style: none;
+}
+
+.item {
+    background-color: white;
+    margin: 0.5rem;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* item ke button ko right side me karne ke liye flex:1; */
+.item li {
+    flex: 1;
+}
+
+.complete-btn,
+.remove-btn {
+    background: #09b6eb;
+    color: white;
+    border: none;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.todo-item {
+    padding: 2px;
+    text-transform: capitalize;
+
+
+}
+
+.complete-btn {
+    background: rgb(21, 145, 21);
+}
+
+.complete-btn,
+.remove-btn {
+    cursor: pointer;
+}
+
+.completed {
+    background: #e4dfdf;
+    color: #000;
+    text-decoration: line-through;
+}
+.fa-trash, .fa-pen-to-square{
+    pointer-events: fill;
+}
+

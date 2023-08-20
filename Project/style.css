@@ -1,0 +1,68 @@
+.cal {
+    width: 285px;
+    margin: auto;
+    /* min-height: 400px; */
+    height: 400px;
+    box-sizing: border-box;
+    background-color: #242627;
+    /* margin-top: 1.5em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    margin-left: 2em; */
+    /* margin: 1.5em 2em 2em;
+    padding: 1.5em; */
+    border: #040405;
+}
+
+#display {
+    width: 97%;
+    height: 50px;
+    background-color: #202022;
+    padding-bottom: .5rem;
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    border: #212122;
+    margin-left: 1.5px;
+    padding: 3.5px;
+
+
+}
+
+
+.row {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.row .orange {
+    border: solid #202020;
+    background-color: #202020;
+    color: orangered;
+    font-size: 29px;
+}
+
+.row .Solid-orange {
+    border: solid orangered;
+    background-color: orangered;
+}
+
+.row button {
+    margin: 2px 5px 2px 8px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: solid #202020;
+    background-color: #202020;
+    color: #fff;
+    font-size: 1rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.row button:hover {
+    background-color: #17181a;
+    border: solid #17181a;
+}

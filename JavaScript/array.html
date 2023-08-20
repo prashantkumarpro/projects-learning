@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array & Methods</title>
+</head>
+
+<body>
+    <!-- <h3> JavaScript arrays are a fundamental data structure used to store and manipulate collection of data. </h3>
+
+<h2>To Do List </h2>
+ <form > 
+    <label for="new-item">New Item:</label>
+    <input type="text " id="new-item">
+    <button type="button" onclick="addItem">Add</button>
+ </form>
+ <ul id="totodo-list"></ul> -->
+    <h2> Number in descending order</h2>
+    <label for="number">Enter a list of Numbers (seprated by commas):</label>
+    <input id="input-box" type="text">
+    <button id="btn">Sort Numbers</button>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+
+    <script src="array.js"></script>
+
+    <script>
+
+
+        let des = document.getElementById('btn').addEventListener('click', sortedItem)
+        function sortedItem() {
+            // get the user's input and split it into an array of numbers
+            let arr = [];
+            let input = document.getElementById('input-box').value;
+            let num = input.split(',').map(Number);
+
+            // using comparison function to  sort the array in descending order
+
+            // num.sort(function (a, b) {
+            //     return b - a;
+            // })
+            
+            num.sort((a, b) => b - a);
+
+            // console.log(num)
+            arr.push(num)
+            // console.log(arr);
+            // display the sorted array on the page
+            document.getElementById('demo2').innerHTML = arr;
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="string.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <!-- <h2>Word counter</h2> -->
+            <textarea id="word-display" rows="12" placeholder="enter some text here"></textarea>
+            <div class="tbutn">
+                <button onclick="CountWrd()" id="btn">Count</button>
+            </div>
+            <div class="got-res">
+                <p class="Words">
+                <pre> Total words     : <span id="counted">0</span></pre>
+                </p>
+                <p class="Chars">
+                <pre> Total Character : <span  id="tChar">0</span> </pre>
+                </p>
+                <!-- <p class="sen">Total Sentence : <span id="sent">0</span></p> -->
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <!--   
+    <p id="word-count"></p>
+    <p id="emptyString"></p> -->
+    <!-- <script src="app.js"></script> -->
+
+    <script>
+        function CountWrd() {
+            // Get the input text
+            let input = document.getElementById('word-display').value;
+            let str = input;
+            let toChar = str.length;
+
+            // display the number of character
+            document.getElementById('tChar').innerHTML = toChar;
+
+            str = str.trim();
+
+            // split the text into an array of words
+            let arrayOfword = str.split(" ");
+
+            let cleanList = arrayOfword.filter(function(elm){
+                return elm !="";
+            })
+            // get the number of words
+            let CoWord = cleanList.length;
+
+            // display the number of words
+            document.getElementById('counted').innerHTML = CoWord;
+
+        }
+    </script>
+</body>
+
+</html>

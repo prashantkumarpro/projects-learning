@@ -1,0 +1,1016 @@
+
+#JAVASCRIPT
+Learn these JavaScript fundamentals and become a better developer
+Cristian Salcescu
+Cristian Salcescu
+Discover Functional JavaScript was named one of the best new Functional Programming books by BookAuthority!
+
+JavaScript has primitives, objects and functions. All of them are values. All are treated as objects, even primitives.
+
+Primitives
+Number, boolean, string, undefined and null are primitives.
+
+Number
+There is only one number type in JavaScript, the 64-bit binary floating point type. Decimal numbers’ arithmetic is inexact.
+
+As you may already know, 0.1 + 0.2 does not make 0.3 . But with integers, the arithmetic is exact, so 1+2 === 3 .
+
+Numbers inherit methods from the Number.prototype object. Methods can be called on numbers:
+
+(123).toString();  //"123"
+(1.23).toFixed(1); //"1.2"
+There are functions for converting strings to numbers : Number.parseInt(), Number.parseFloat() and Number():
+
+Number.parseInt("1")       //1
+Number.parseInt("text")    //NaN
+Number.parseFloat("1.234") //1.234
+Number("1")                //1
+Number("1.234")            //1.234
+Invalid arithmetic operations or invalid conversions will not throw an exception, but will result in the NaN “Not-a-Number” value. Number.isNaN() can detect NaN .
+
+The + operator can add or concatenate.
+
+1 + 1      //2
+"1" + "1"  //"11"
+1 + "1"    //"11"
+String
+A string stores a series of Unicode characters. The text can be inside double quotes "" or single quotes ''.
+
+Strings inherit methods from String.prototype. They have methods like : substring(), indexOf() and concat() .
+
+"text".substring(1,3) //"ex"
+"text".indexOf('x')   //2
+"text".concat(" end") //"text end"
+Strings, like all primitives, are immutable. For example concat() doesn’t modify the existing string but creates a new one.
+
+Boolean
+A boolean has two values : true and false .
+The language has truthy and falsy values.
+false, null, undefined, ''(empty string), 0 and NaN are falsy. All other values, including all objects, are truthy.
+
+The truthy value is evaluated to true when executed in a boolean context. Falsy value is evaluated to false. Take a look at the next example displaying the false branch.
+
+let text = '';
+if(text) {
+  console.log("This is true");
+} else {
+  console.log("This is false");
+}
+The equality operator is ===. The not equal operator is !== .
+
+Variables
+Variables can be defined using var, let and const.
+
+var declares and optionally initializes a variable. Variables declared with var have a function scope. They are treated as declared at the top of the function. This is called variable hoisting.
+
+The let declaration has a block scope.
+
+The value of a variable that is not initialize is undefined .
+
+A variable declared with const cannot be reassigned. Its value, however, can still be mutable. const freezes the variable, Object.freeze() freezes the object. The const declaration has a block scope.
+
+Objects
+An object is a dynamic collection of properties.
+
+The property key is a unique string. When a non string is used as the property key, it will be converted to a string. The property value can be a primitive, object, or function.
+
+The simplest way to create an object is to use an object literal:
+
+let obj = {
+  message : "A message",
+  doSomething : function() {}
+}
+There are two ways to access properties: dot notation and bracket notation. We can read, add, edit and remove an object’s properties at any time.
+
+get: object.name, object[expression]
+set: object.name = value, object[expression] = value
+delete: delete object.name, delete object[expression]
+let obj = {}; //create empty object
+obj.message = "A message"; //add property
+obj.message = "A new message"; //edit property
+delete obj.message; //delete property
+Objects can be used as maps. A simple map can be created using Object.create(null) :
+
+let french = Object.create(null);
+french["yes"] = "oui";
+french["no"]  = "non";
+french["yes"];//"oui"
+All object’s properties are public. Object.keys() can be used to iterate over all properties.
+
+function logProperty(name){
+  console.log(name); //property name
+  console.log(obj[name]); //property value
+}
+Object.keys(obj).forEach(logProperty);
+Object.assign() copies all properties from one object to another. An object can be cloned by copying all its properties to an empty object:
+
+let book = { title: "The good parts" };
+let clone = Object.assign({}, book);
+An immutable object is an object that once created cannot be changed. If you want to make the object immutable, use Object.freeze() .
+
+Primitives vs Objects
+Primitives (except null and undefined) are treated like objects, in the sense that they have methods but they are not objects.
+
+Numbers, strings, and booleans have object equivalent wrappers. These are the Number, String, and Boolean functions.
+
+In order to allow access to properties on primitives, JavaScript creates an wrapper object and then destroys it. The process of creating and destroying wrapper objects is optimized by the JavaScript engine.
+
+Primitives are immutable, and objects are mutable.
+
+Array
+Arrays are indexed collections of values. Each value is an element. Elements are ordered and accessed by their index number.
+
+JavaScript has array-like objects. Arrays are implemented using objects. Indexes are converted to strings and used as names for retrieving values.
+
+A simple array like let arr = ['A', 'B', 'C'] is emulated using an object like the one below:
+
+{
+  '0': 'A',
+  '1': 'B',
+  '2': 'C'
+}
+Note that arr[1] gives the same value as arr['1'] : arr[1] === arr['1'] .
+
+Removing values from the array with delete will leave holes. splice() can be used to avoid the problem, but it can be slow.
+
+let arr = ['A', 'B', 'C'];
+delete arr[1];
+console.log(arr); // ['A', empty, 'C']
+console.log(arr.length); // 3
+JavaScript’s arrays don’t throw “index out of range” exceptions. If the index is not available, it will return undefined.
+
+Stack and queue can easily be implemented using the array methods:
+
+let stack = [];
+stack.push(1);           // [1]
+stack.push(2);           // [1, 2]
+let last = stack.pop();  // [1]
+console.log(last);       // 2
+
+let queue = [];
+queue.push(1);           // [1]
+queue.push(2);           // [1, 2]
+let first = queue.shift();//[2]
+console.log(first);      // 1
+Functions
+Functions are independent units of behavior.
+
+Functions are objects. Functions can be assigned to variables, stored in objects or arrays, passed as an argument to other functions, and returned from functions.
+
+There are three ways to define a function:
+
+Function Declaration (aka Function Statement)
+Function Expression (aka Function Literal)
+Arrow Function
+The Function Declaration
+function is the first keyword on the line
+it must have a name
+it can be used before definition. Function declarations are moved, or “hoisted”, to the top of their scope.
+function doSomething(){}
+The Function Expression
+
+function is not the first keyword on the line
+the name is optional. There can be an anonymous function expression or a named function expression.
+it needs to be defined, then it can execute
+it can auto-execute after definition (called “IIFE” Immediately Invoked Function Expression)
+let doSomething = function() {}
+Arrow Function
+The arrow function is a sugar syntax for creating an anonymous functionexpression.
+
+let doSomething = () => {};
+Arrow functions don’t have their own this and arguments.
+
+Function invocation
+A function, defined with the function keyword, can be invoked in different ways:
+
+Function form
+doSomething(arguments)
+Method form
+theObject.doSomething(arguments)
+theObject["doSomething"](arguments)
+Constructor form
+new Constructor(arguments)
+Apply form
+ doSomething.apply(theObject, [arguments])
+ doSomething.call(theObject, arguments)
+Functions can be invoked with more or fewer arguments than declared in the definition. The extra arguments will be ignored, and the missing parameters will be set to undefined.
+
+Functions (except arrow functions) have two pseudo-parameters: this and arguments.
+
+this
+Methods are functions that are stored in objects. Functions are independent. In order for a function to know on which object to work onthis is used. this represents the function’s context.
+
+There is no point to use this when a function is invoked with the function form: doSomething(). In this case this is undefined or is the window object, depending if the strict mode is enabled or not.
+
+When a function is invoked with the method form theObject.doSomething(),this represents the object.
+
+When a function is used as a constructor new Constructor(), thisrepresents the newly created object.
+
+The value of this can be set with apply() or call():doSomething.apply(theObject). In this case this is the object sent as the first parameter to the method.
+
+The value of this depends on how the function was invoked, not where the function was defined. This is of course a source of confusion.
+
+arguments
+The arguments pseudo-parameter gives all the arguments used at invocation. It’s an array-like object, but not an array. It lacks the array methods.
+
+function log(message){
+  console.log(message);
+}
+
+function logAll(){
+  let args = Array.prototype.slice.call(arguments);
+  return args.forEach(log);
+}
+
+logAll("msg1", "msg2", "msg3");
+An alternative is the new rest parameters syntax. This time args is an array object.
+
+function logAll(...args){
+  return args.forEach(log);
+}
+return
+A function with no return statement returns undefined. Pay attention to the automatic semi-colon insertion when using return. The following function will not return an empty object, but rather an undefined one.
+
+function getObject(){ 
+  return 
+  {
+  }
+}
+getObject()
+To avoid the issue, use { on the same line as return :
+
+function getObject(){ 
+  return {
+  }
+}
+Dynamic Typing
+JavaScript has dynamic typing. Values have types, variables do not. Types can change at run time.
+
+function log(value){
+  console.log(value);
+}
+
+log(1);
+log("text");
+log({message : "text"});
+The typeof() operator can check the type of a variable.
+
+let n = 1;
+typeof(n);   //number
+
+let s = "text";
+typeof(s);   //string
+
+let fn = function() {};
+typeof(fn);  //function
+A Single Thread
+The main JavaScript runtime is single threaded. Two functions can’t run at the same time. The runtime contains an Event Queue which stores a list of messages to be processed. There are no race conditions, no deadlocks.However, the code in the Event Queue needs to run fast. Otherwise the browser will become unresponsive and will ask to kill the task.
+
+Exceptions
+JavaScript has an exception handling mechanism. It works like you may expect, by wrapping the code using the try/catch statement. The statement has a single catch block that handles all exceptions.
+
+It’s good to know that JavaScript sometimes has a preference for silent errors. The next code will not throw an exception when I try to modify a frozen object:
+
+let obj = Object.freeze({});
+obj.message = "text";
+Strict mode eliminates some JavaScript silent errors. "use strict"; enables strict mode.
+
+Prototype Patterns
+Object.create(), constructor function, and class build objects over the prototype system.
+
+Consider the next example:
+
+let servicePrototype = {
+ doSomething : function() {}
+}
+
+let service = Object.create(servicePrototype);
+console.log(service.__proto__ === servicePrototype); //true
+Object.create() builds a new object service which has theservicePrototype object as its prototype. This means that doSomething() is available on the service object. It also means that the __proto__ property of service points to the servicePrototype object.
+
+Let’s now build a similar object using class.
+
+class Service {
+  doSomething(){}
+}
+
+let service = new Service();
+console.log(service.__proto__ === Service.prototype);
+All methods defined in the Service class will be added to theService.prototype object. Instances of the Service class will have the same prototype (Service.prototype) object. All instances will delegate method calls to the Service.prototype object. Methods are defined once onService.prototype and then inherited by all instances.
+
+Prototype chain
+Objects inherit from other objects. Each object has a prototype and inherits their properties from it. The prototype is available through the “hidden” property __proto__ .
+
+When you request a property which the object does not contain, JavaScript will look down the prototype chain until it either finds the requested property, or until it reaches the end of the chain.
+
+Functional Patterns
+JavaScript has first class functions and closures. These are concepts that open the way for Functional Programming in JavaScript. As a result, higher order functions are possible.
+
+filter(), map(), reduce() are the basic toolbox for working with arrays in a function style.
+
+filter() selects values from a list based on a predicate function that decides what values should be kept.
+
+map() transforms a list of values to another list of values using a mapping function.
+
+let numbers = [1,2,3,4,5,6];
+
+function isEven(number){
+  return number % 2 === 0;
+}
+
+function doubleNumber(x){
+  return x*2;
+}
+
+let evenNumbers = numbers.filter(isEven);
+//2 4 6
+let doubleNumbers = numbers.map(doubleNumber);
+//2 4 6 8 10 12
+reduce() reduces a list of values to one value.
+
+function addNumber(total, value){
+  return total + value;
+}
+
+function sum(...args){
+  return args.reduce(addNumber, 0);
+}
+
+sum(1,2,3); //6
+Closure is an inner function that has access to the parent function’s variables, even after the parent function has executed. Look at the next example:
+
+function createCount(){
+   let state = 0;
+   return function count(){
+      state += 1;
+      return state;
+   }
+}
+
+let count = createCount();
+console.log(count()); //1
+console.log(count()); //2
+count() is a nested function. count() accesses the variable state from its parent. It survives the invocation of the parent function createCount().count() is a closure.
+
+A higher order function is a function that takes another function as an input, returns a function, or does both.
+
+filter(), map(), reduce() are higher-order functions.
+
+A pure function is a function that returns a value based only of its input. Pure functions don’t use variables from the outer functions. Pure functions cause no mutations.
+
+In the previous examples isEven(), doubleNumber(), addNumber() and sum()are pure functions.
+
+Conclusion
+The power of JavaScript lies in its simplicity.
+
+Knowing the JavaScript fundamentals makes us better at understanding and using the language.
+
+Learn functional React, in a project-based way, with Functional Architecture with React and Redux.
+
+Discover Functional JavaScript was named one of the best new Functional Programming books by BookAuthority!
+
+For more on applying functional programming techniques in React take a look at Functional React.
+
+Follow on Twitter
+
+Cristian Salcescu
+Cristian Salcescu
+Author of Discover Functional JavaScript and Functional React. Enthusiastic about sharing ideas.
+
+If you read this far, tweet to the author to show them you care. Tweet a thanks
+
+Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. Get started
+
+freeCodeCamp is a donor-supported tax-exempt 501(c)(3) charity organization (United States Federal Tax Identification Number: 82-0779546)
+
+Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.
+
+Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Html fundamentals
+Search
+    Search 9,900+ tutorials
+freeCodeCamp.org
+Forum Donate
+Support our charity and our mission. Donate to freeCodeCamp.org.
+
+JANUARY 12, 2021
+/
+#WEB DEVELOPMENT
+Learn HTML Basics for Beginners in Just 15 Minutes
+Thu Nghiem
+Thu Nghiem
+Learn HTML Basics for Beginners in Just 15 Minutes
+If you want to build a website, the first language that you need to learn is HTML.
+
+In this article, we are going to go through the basics of HTML. At the end, we are going to build a basic website using only HTML.
+
+Here's a video you can watch if you want to supplement this article:
+
+If you prefer video, you can watch it here
+
+What Is HTML?
+HTML, which stands for Hypertext Markup Language, is a pretty simple language. It consists of different elements which we use to structure a web page.
+
+Screen-Shot-2021-01-11-at-1.16.17-PM
+What is HTML?
+What Are HTML Elements?
+Screen-Shot-2021-01-11-at-1.16.34-PM
+HTML elements
+The element usually starts with an opening tag, which consists of the name of the element. It's wrapped in opening and closing angle brackets. The opening tag indicates where the element begins.
+
+Similar to the opening tag, the closing tag is also wrapped in opening and closing angle brackets. But it also includes a forward slash before the element's name.
+
+Everything inside the opening and closing tags is the content.
+
+But not all elements follow this pattern. We call those that don't empty elements. They only consist of a single tag or an opening tag that cannot have any content. These elements are typically used to insert or embed something in the document.
+
+For example, the <img> element is used to embed an image file, or the <input> element is used to insert an input onto the page.
+
+<img src="https://images.unsplash.com/photo-1610447847416-40bac442fbe6" width="50">
+In the example above, the <img> element only consists of one tag that does not have any content. This element is used to insert an image file from Unsplash in the document.
+
+How to Nest HTML Elements
+<div class="my-list">
+  <h4>My list:</h4>
+
+  <ul>
+     <li>Apple</li>
+     <li>Orange</li>
+     <li>Banana</li>
+  </ul>
+</div>
+Elements can be placed inside other elements. This is called Nesting. In the example above, inside the <div> element we have an <h4> element and an <ul> or unordered list element. And Similarly inside the <ul> element, there are 3 <li> or list item elements.
+
+Basic nesting is quite straight-forward to understand. But when the page gets larger, nesting can become complicated.
+
+Therefore, before working with HTML, think about the layout structure you would like to have. You can draw it out on a piece of paper or in your mind. It will help a lot.
+
+How to Nest HTML Elements
+What are HTML Attributes?
+Elements also have attributes, which contain extra information about the element that will not appear in the content.
+
+<img src="https://images.unsplash.com/photo" width="50">
+In the example above, the <img> element has 2 attributes: src or source to specify the path of the image, and width to specify the width of the image in pixels.
+
+Screen-Shot-2021-01-12-at-10.45.17-AM
+With this example, you can see the following characteristics of attributes:
+
+There is a space between attributes and the element name
+Attributes are added in the opening tag
+Elements can have many attributes
+Attributes usually have a name and a value: name=“value”
+But not every attribute has the same pattern. Some can exist without values, and we call them Boolean Attributes.
+
+<button onclick=“alert('Submit')" disabled>Button</button>
+In this example, if we want to disable the button, all we have to do is pass a disabled attribute without any values. This means that the presence of the attribute represents the true value, otherwise, the absence represents the false value.
+
+Common HTML elements
+There are in total more than 100 elements. But 90% of the time you will only use around 20 of the most common. I have put them into 5 groups:
+
+Section elements
+  <div>, <span>, <header>, <footer>, <nav>, <main>, <section> 
+These elements are used to organize the content into different sections. They are usually self-explanatory, for example, <header> usually represents a group of the introduction and navigation section, <nav> represents the section that contains navigation links, and so on.
+
+Text content
+  <h1> to <h6>, <p>, <div>, <span>, <ul>, <ol>, <li>
+These elements are used to organize content or text blocks. They are important to accessibility and SEO. They tell the browser the purpose or structure of the content.
+
+Forms
+  <form>, <input>, <button>, <label>, <textarea>
+These elements can be used together to create forms that users can fill out and submit. Forms might be the trickiest part of HTML.
+
+Images and Links
+  <img>, <a>
+These elements are used to insert an image or create a hyperlink.
+
+Others
+  <br>, <hr>
+These elements are used to add a break to the webpage.
+
+You can find all the elements on developer.mozilla.org. But for beginners, you just need to know the most common ones.
+
+Block-level vs inline HTML elements
+By default, an element can be either block-level or an inline element.
+
+Block-level elements are the elements that always start on a new line and take up the full width available.
+
+Inline elements are the elements that do not start on a new line and it only take up as much width as necessary.
+
+Screen-Shot-2021-01-11-at-1.17.22-PM
+Block level vs. Inline HTML elements
+Two elements that represent block-level and inline elements, respectively, are <div> and <span>. In this example, you can see that the <div> elements takes 3 lines, whereas the <span> element only takes up 1 line.
+
+But the question is: how do we know which ones are block-level elements and which ones are inline elements? Well, unfortunately you need to remember them. The easiest way is to remember which are inline elements – and the rest are block elements.
+
+If we look back at the most common HTML elements, inline elements include: <span>, <input>, <button>, <label>, <textarea>, <img>, <a>, <br>.
+
+How to comment in HTML
+<p>This is a paragraph.</p>
+
+<!-- <p>I am not showing.</p> -->
+The purpose of comments is to include notes in the code to explain your logic or simply to organize your code.
+
+HTML comments are wrapped in the special markers: <!-- and --> and they are ignored in the browser.
+
+How to use HTML entities
+What if you want to show the text: the <p> tag defines a paragraph., but the browser interprets <p> as an opening tag for a new element? In this case, we can use HTML entities like in the following example:
+
+<p>the <p> tag defines a paragraph.</p>
+
+<p>the &lt;p&gt; define a paragraph.</p>
+How to use emoji in HTML
+In the modern web, we can display emoji in HTML pretty easily, like this: 👻
+
+<p>😀 Grinning Face.</p>
+
+<p>🎂 Birthday</p>
+Common beginner mistakes in HTML
+1. Tags/Element names
+Tags/Element names are cAse-inSensitive. This means that they can be written in lowercase or uppercase, but it is recommended that you write everything in lowercase: <button> not <ButTon>.
+
+2. Closing tag
+Failing to include a closing tag is a common beginner error. Therefore, whenever you create an opening tag, immediately put in a closing tag.
+
+3. Nesting
+This is wrong:
+
+<div>Div 1 <span> Span 2 </div></span>
+The tags have to open and close in a way that they are inside or outside one another.
+
+4. Single quotes and Double quotes
+This is wrong:
+
+<img src="https://images.unsplash.com/'>
+You cannot mix single quotes and double-quotes. You should always use double quotes and use HTML entities if needed.
+
+How to build a simple website with HTML
+Individual HTML elements are not enough to create a website. So let's see what more we need to build a simple website from scratch.
+
+How to create an HTML document
+First, let's open Visual Studio Code (or your favorite code editor). In the folder of your choice, create a new file and name it index.html.
+
+In the index.html file, type ! (exclamation mark) and press enter. You will see something like this:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+This is the minimal code that an HTML document should have to make up a website. And here we have:
+
+<!DOCTYPE html>: First we have Doctype. For some weird historical reason in HTML we have to include the doctype for everything to work correctly.
+<html lang="en"></html>: The <html> element wraps all the content on the page, also known as the root element. And we should always include the lang attribute to declare the language of the page.
+<head></head>: The <head> element is a container for everything you want to include, but not content that you show to your users.
+<meta charset="UTF-8" />: The first meta element is used to set the character set to be UTF-8, which includes most characters from written languages.
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />: The second meta element specifies the browser viewport. This setting is for a mobile-optimized site.
+<title>Document</title>: This is the <title> element. It sets the title of the page.
+<body></body>: The <body> element contains all the content on the page.
+How to build a pancake recipe page
+Alright, now that we have the starter code, let's build a pancake recipe page. We are going to use the content from this AllRecipes Page.
+
+First, let's give the <title> element content of the pancakes recipe. You will see the text on the web page tab change. In the <body> element, let's create 3 elements: <header>, <main> and <footer> representing 3 sections.
+
+1. Build the header section
+In the header, we want to have the logo and the navigation. Therefore, let's create a div with the content ALL RECIPE for the logo.
+
+For the navigation, let's use the <nav> element. Within the <nav> element, we can use <ul> to create an unordered list. We want to have 3 <li> elements for 3 links: Ingredients, Steps, and Subscribe. The header code looks like this:
+
+...
+    <header>
+      <div>ALL RECIPE</div>
+      <nav>
+        <ul>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#steps">Steps</a></li>
+          <li><a href="#subsribe">Subscribe</a></li>
+        </ul>
+      </nav>
+    </header>
+...
+2. Build the Main Section
+In the main section, first, we want to have a title and an image. We can use h1 for the title and <img> for the image (we can use an image from Unsplash for free):
+
+...
+    <main>
+      <h1>Good Old Fashioned Pancakes</h1>
+      <img
+        src="https://images.unsplash.com/photo-1575853121743-60c24f0a7502"
+        alt="pancake"
+        width="250"
+      />
+    </main>
+...
+Next, we want to list all the ingredients. We can use <ol> to create an ordered list and <input type="checkbox" /> to create a checkbox.
+
+But before that, we can use <h2> to start a new content block. We also want to add the id attribute for <h2> so that the link in the navigation knows where to go:
+
+...
+    <main>
+    ...
+      <h2 id="ingredients">Ingredients</h2>
+      <ol>
+        <li><input type="checkbox" /> 1 ½ cups all-purpose flour</li>
+        <li><input type="checkbox" /> 3 ½ teaspoons baking powder</li>
+        <li><input type="checkbox" /> 1 teaspoon salt</li>
+        <li><input type="checkbox" /> 1 tablespoon white sugar</li>
+        <li><input type="checkbox" /> 1 ¼ cups milk</li>
+        <li><input type="checkbox" /> 1 egg</li>
+      </ol>
+    </main>
+...
+After the ingredients, we want to list all the steps. We can use <h4> for the step heading and <p> for the step content:
+
+...
+    <main>
+    ...
+      <h2 id="steps">Steps</h2>
+      
+      <h4>Step 1</h4>
+      <p>
+        In a large bowl, sift together the flour, baking powder, salt and sugar.
+        Make a well in the center and pour in the milk, egg and melted butter;
+        mix until smooth.
+      </p>
+      
+      <h4>Step 2</h4>
+      <p>
+        Heat a lightly oiled griddle or frying pan over medium-high heat. Pour
+        or scoop the batter onto the griddle, using approximately 1/4 cup for
+        each pancake. Brown on both sides and serve hot.
+      </p>
+    </main>
+...
+Alright, now that we are done with the main section, let's move on to the footer section.
+
+3. Build the Footer Section
+In the footer, we want to have a subscribe form and copyright text.
+
+For the subscribe form, we can use the <form> element. Inside it, we can have an <input type="text"> for text input and a <button> for the submit button.
+
+For the copyright text, we can simply use a <div>. Notice here, we can use the HTML entity $copy; for the copyright symbol.
+
+We can add <br> to add some space between the subscribe form and the copyright text:
+
+...
+    <footer>
+      <h6 id="subscribe">Subscribe</h6>
+      <form onsubmit="alert('Subscribed')">
+        <input type="text" placeholder="Enter Email Address" />
+        <button>Submit</button>
+      </form>
+      <br />
+      <div>&copy; dakota kelly at Allrecipe.com</div>
+    </footer>
+...
+Alright now we are done! Here is the full code for reference:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pancake Recipe</title>
+  </head>
+  <body>
+    <header>
+      <div>ALL RECIPE</div>
+      <nav>
+        <ul>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#steps">Steps</a></li>
+          <li><a href="#subsribe">Subscribe</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Good Old Fashioned Pancakes</h1>
+      <img
+        src="https://images.unsplash.com/photo-1575853121743-60c24f0a7502?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cGFuY2FrZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+        alt="pancake"
+        width="250"
+      />
+      <h2 id="ingredients">Ingredients</h2>
+      <ol>
+        <li><input type="checkbox" /> 1 ½ cups all-purpose flour</li>
+        <li><input type="checkbox" /> 3 ½ teaspoons baking powder</li>
+        <li><input type="checkbox" /> 1 teaspoon salt</li>
+        <li><input type="checkbox" /> 1 tablespoon white sugar</li>
+        <li><input type="checkbox" /> 1 ¼ cups milk</li>
+        <li><input type="checkbox" /> 1 egg</li>
+      </ol>
+      <h2 id="steps">Steps</h2>
+      <h4>Step 1</h4>
+      <p>
+        In a large bowl, sift together the flour, baking powder, salt and sugar.
+        Make a well in the center and pour in the milk, egg and melted butter;
+        mix until smooth.
+      </p>
+      <h4>Step 2</h4>
+      <p>
+        Heat a lightly oiled griddle or frying pan over medium-high heat. Pour
+        or scoop the batter onto the griddle, using approximately 1/4 cup for
+        each pancake. Brown on both sides and serve hot.
+      </p>
+    </main>
+    <hr />
+    <footer>
+      <h6 id="subscribe">Subscribe</h6>
+      <form onsubmit="alert('Subscribed')">
+        <input type="text" placeholder="Enter Email Address" />
+        <button>Submit</button>
+      </form>
+      <br />
+      <div>&copy; dakota kelly at Allrecipe.com</div>
+    </footer>
+  </body>
+</html>
+Conclusion
+You can build a simple website with just HTML. But to be able to build beautiful and functional websites, you need to study CSS and JavaScript.
+
+You can follow me on social media or Youtube for future updates on these topics. But meanwhile, you can check out the freeCodeCamp Curriculum to practice HTML by solving small tasks.
+
+Otherwise, stay happy coding and see you in future posts 👋.
+
+__________ 🐣 About me __________
+
+I am the founder of DevChallenges
+Subscribe to my Channel
+Follow my Twitter
+Join Discord
+Thu Nghiem
+Thu Nghiem
+Creator of devchallenges.io
+
+If you read this far, tweet to the author to show them you care. Tweet a thanks
+
+Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. Get started
+
+freeCodeCamp is a donor-supported tax-exempt 501(c)(3) charity organization (United States Federal Tax Identification Number: 82-0779546)
+
+Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.
+
+Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.
+
+You can make a tax-deductible donation here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fundamentals of CSS
+
+https://www.freecodecamp.org/news/follow-these-steps-to-become-a-css-superstar-837cd6cb9b1a/
+
+
+Search
+    Search 9,900+ tutorials
+freeCodeCamp.org
+Forum Donate
+Support our charity and our mission. Donate to freeCodeCamp.org.
+
+APRIL 10, 2019
+/
+#CSS
+Follow these steps to become a CSS Superstar
+by Preetish HS
+
+CSS (Cascading Style Sheets) is one of the core technologies used for building webpages. Since it is the ONLY style sheet language that browsers can understand, it's important to learn CSS in depth to master web development.
+
+It’s very easy to get started with CSS. With just a few hours of training, you can easily style texts, elements and layouts. However, it becomes progressively difficult and soon you’ll come to a situation where your code starts getting quite messy. The components which used to work before start breaking, and you google and find the fix which fixes your element but breaks 5 other elements, as the solution you found on google changed the display or position ?
+
+Why learning CSS the right way is important
+If you don’t have a deeper understanding of the basics, CSS becomes more like a trial and error method. You’ll try different values for different properties and finally keep the one which sort of works close to what you wanted without actually understanding how it works.
+
+You’ll start googling basic things like “how to centre two divs” or “how to align a div and a text vertically” and copy paste the code from StackOverflow or codePen every time. Back in those days, when flexbox was not so popular, “how do you align a div both vertically and horizontally in a page?” was a classic CSS interview question. Many beginners could get the horizontal part right but only a few got the vertical part right too.
+
+The Roadmap ??
+1. The Basics ?
+If you are just starting web development, learn some basics of HTML before starting CSS. In CSS, first read the theory on what CSS is, how it works in the browser, and its basic syntax and usage.
+
+Learn about the different kinds of stylesheets available, their differences, selectors, and basic styling such as font-size, width, height etc.
+
+You can get started by going through the tutorials at MDN.
+
+2. CSS Box Model ?
+1*HnuCN_p4MiCMtOp7ziLpnA
+credit: https://developer.mozilla.org
+Understand the basics of CSS box model and the properties associated with it such as margin, border, padding etc
+
+3. Images and Background ?
+Images make the webpage come alive. There are many ways to add an image such as image tags, adding background colours/gradients and background images to various other tags. You could also apply what you have learnt previously such as setting borders to images or use multiple images and develop a simple gallery.
+
+<img src="../images/wallpaper.jpg" ><div class="image" > </div>
+.image {   background-image: url(../images/wallpaper.jpg);}
+4. Display and Position ?
+These two are some of the most import properties in CSS where you need to pay attention to understand them correctly. Knowing these two properties well can make your CSS journey a lot smoother.
+
+ display: block | inline | inline-block | table | etc
+Understand how each of these display properties are used. You’ll start to notice some HTML elements such as <div&gt; &lt;p> or <h1> behave like display: block and some elements like <img> <span&gt; behave like display: inline.
+
+position: static | absolute | relative | fixed | sticky
+This is one of the properties where even experienced programmers make mistakes. Learn how each of them works, how the position of one element affects its siblings or parent, in what situations you use them, etc.
+
+This step is so important that you can repeat it again and again till you understand!
+
+float: left | right
+Though float layouts are a bit old school now, there are many old websites which still uses float layouts.
+
+5. Colours, Fonts, lists and Tables ☑️
+Understand different colour formats such as HEX code, rgb, rgba, hsl, hsla, transparent etc
+
+color: white;color: #fff;color: rgb(255, 255, 255);color: rgba(255, 255, 255, 1);color: hsl(0, 100%, 100%);color: hsla(0, 100%, 100%, 1);color: transparent;
+Learn how to use different fonts. Some fonts are not available on all browsers, so you’ll need to learn to add fonts manually with woff or ttf files or importing google fonts.
+
+CSS can turn a basic unordered list <ul> into a beautiful navigation bar! Years ago tables were used to create screen layouts, thank goodness we don’t do that anymore! ?
+
+6. Pseudo-classes and Combinators ➕
+A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). A pseudo-class can be as simple as :hover or :visited or something complex like :nth-last-of-type(odd)
+
+Combinators help us apply styles to child elements or siblings easily without having to create new classes for each of them.
+
+/* all the paragraph elements inside the container will have color red */
+.container > p {  color: yellow;}
+7. Debugging and Dev tools ?
+CSS doesn't throw any errors. It silently breaks the UI if you don’t get the styles correct ? so learning how to use Dev tools is very important.
+
+Chrome Dev tools is an amazing tool for web developers. It's packed with a lot of great features for debugging your website in real-time and also has performance checking tools like lighthouse built into it.
+
+8. Practice Practice Practice ?
+0*RapmXy8eJSyb2OX6
+Photo by David Rangel on Unsplash
+The contents you learnt above are enough to develop a basic website, so at this point you should start practising by developing small websites. You’ll come across various challenges when you build a real application. For your practice, you can develop a simple website for a resort, or build an image gallery, or a blog, or you can also build a few basic features of your favourite social media such as Facebook or Instagram.
+
+9. Responsive Web Design ??
+1*ScNanqYCmVsKnRaPWosYIw
+credit: Wikipedia
+After learning web development for desktop there are a lot of other devices through which the websites are accessed. Supporting these devices is equally important. Before the Responsive design got popular, developers used to design a separate website for mobiles, a separate website for touch-enabled devices etc. remember m.facebook.com and touch.facebook.com?
+
+There are 3 important things in Responsive web design:
+
+Fluid Layouts:
+
+Width set with px does not scale based on the browser window. To make the elements scale based on the browser size, we need to create fluid layouts by setting the sizes in % or rem units.
+
+Media Queries:
+
+A media query is a technique to include a block of CSS properties only if a certain condition is true. We set breakpoints based on our design and change the CSS depending on the browser width.
+
+@media only screen and (max-width: 600px) {
+ body {
+   background-color: lightblue;
+ }
+}
+
+Responsive images:
+
+Images scale down as the width of the browser window decreases or if the website is viewed in mobile devices. Sometimes it would be difficult to focus on the important details on a particular image so we’d need to use different images for different screens.
+
+10. Flexbox and Grid ◼️ ⬛ ?
+It’s been around 10 years(!) since Flexbox was first introduced, but it was incorporated only recently in 2015. — source
+
+Flexbox and Grid are the styles used to create flexible layouts, and they make our lives so much easier! This is one of the best things that has ever happened to CSS. ?
+
+The layout shown below would have taken more than 300 lines of CSS code without Flexbox or Grid.
+
+11. Transforms, transitions and animations ?
+Learning basic transforms and transitions will come in handy if you want to create an interactive web page with moving parts on mouse events or keyboard events such as hover or click.
+
+Before CSS3, animations were done mostly using jQuery — A JavaScript library. Now CSS has become so powerful that we can do complex animations without any JavaScript.
+
+12. Preprocessors ✴️
+CSS preprocessors are scripting languages that extend the default capabilities of CSS. They enable us to use logic in our CSS code, such as variables, nesting, inheritance, mixins, functions, and mathematical operations. Some of the popular ones are SASS, LESS, STYLUS and POSTCSS.
+
+The SCSS format of SASS is more widely used, so it's good to get started with SASS for development.
+
+The autoprefixer plugin of POSTCSS makes your CSS rules compatible across various browsers by adding extra rules such as -moz- and-webkit-.
+
+13. Frameworks ?
+Learning frameworks such as Bootstrap, Semantic-UI or Materialize is optional but very useful for faster development as they provide a lot of styles and layouts out of the box.
+
+These Frameworks are tested across various browsers, so using these will avoid some of the compatibility issues. Most of the frameworks follow the responsive design pattern and lots of free 3rd party templates are be available to get started quickly.
+
+14. Specificity ?
+“tries to modify a button style of bootstrap but fails, googles for a solution, uses !important , gets all excited thinking that’s the right fix for all the problems!” And that's how you doomed your project! ? If you understand the concept of Specificity correctly, problems regarding overlapping rules in multiple stylesheets will be reduced significantly.
+
+Specificity is a weight that is applied to a given CSS declaration, determined by the number of each selector type in the matching selector. Each selector has a different weight, and using multiple selectors can change the specificity. If the overall specificities are equal then the order is considered. See the example below:
+
+<style>div.wrapper p.paragraph {
+  color: pink;
+}#container p{
+  color: violet;
+}p {
+ color: green;
+}.paragraph {
+ color: yellow;
+}
+</style><div class="wrapper" id="container">
+  <p class="paragraph"> This is a dummy text </p>
+</div>
+
+What do you think would be the colour of the paragraph? ?
+
+15. CSS Architecture ?
+Writing CSS code is easy, but writing maintainable CSS code is hard. A proper structure and method have to be followed to write good CSS code. Just following the best practices is not sufficient to write maintainable CSS.
+
+Some of the Architecture patterns for CSS are BEM, OOCSS, SMACSS etc. You can go through the documentation and choose whichever pattern fits your tastes and project.
+
+There you have it! ?
+Mastering CSS takes patience and lots of practice. As you start practising you'll experience the awesomeness of CSS. 15 big steps might seem daunting at first but they’re actually not. I loved each and every step, and my experience got better every time. ?
+
+Thanks for reading my article. I hope that you have found this useful. If so, be sure to leave lots of claps! ? (You can leave up to 50 ?)
+
+Want to hire me for your next project? Drop me an email at contact@preetish.in ?
+If this article was helpful, tweet it.
+
+Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. Get started
+
+freeCodeCamp is a donor-supported tax-exempt 501(c)(3) charity organization (United States Federal Tax Identification Number: 82-0779546)
+
+Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.
+
+Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.
+
+You can make a tax-deductible donation here.

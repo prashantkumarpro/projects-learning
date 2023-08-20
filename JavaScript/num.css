@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: center;
+    margin: 12px;
+    font-size: 2.5rem;
+    color: dodgerblue;
+
+
+}
+
+.cal {
+
+    border-radius: 5px;
+    width: 555px;
+    height: 440px;
+    margin: 2px auto;
+    padding: 45px;
+    font-size: 18px;
+
+}
+
+
+#num1 {
+    padding: 5px 8px;
+    margin: 5px;
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 3px;
+    outline: none;
+    font-size: 1rem;
+}
+
+#num2 {
+    padding: 5px 8px;
+    margin: 5px;
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 3px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+
+}
+
+.operators {
+    margin-top: 15px;
+    height: 12px;
+}
+
+.operators button {
+    padding: 8px 11px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: rgb(100, 97, 94);
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.2rem;
+
+}
+
+button:hover {
+    background-color: rgb(62, 65, 65);
+}
+
+#result {
+    margin: 10px;
+    width: 250px;
+    height: 54px;
+    background-color: rgb(100, 97, 94);
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 2rem;
+    color: white;
+ 
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a to do list using html, CSS, and JavaScript</title>
+</head>
+<style>
+    .container {
+
+        box-sizing: border-box;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        margin: auto;
+
+    }
+
+    .Todo {
+        width: 100%;
+        background-color: yellow;
+        max-width: 333px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    input[type=text] {
+        margin: 0 auto;
+        width: 50%;
+        padding: 12px;
+    }
+
+    #add {
+        padding: 12px 16px;
+        outline: none;
+        border: 2px solid #3a72da;
+        background-color: #3a72da;
+        border-radius: 4px;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+        font-weight: bolder;
+        letter-spacing: 0.5px;
+    }
+
+    .item-container{
+        border: 1px solid black;
+
+    }
+    .items{
+        width: 100%;
+        max-width: 333px;
+        margin: 0 auto;
+        display: flex;
+       justify-content: space-between;
+       
+    }
+    .item-btn{
+        margin: 20px auto;
+        padding: 12x 18px;
+    
+    }
+    button{
+        padding: 12px 16px;
+        outline: none;
+        border: 2px solid #3a72da;
+        background-color: #3a72da;
+        border-radius: 4px;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+        font-weight: bolder;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="Todo">
+            <input type="text" id="input-box" placeholder="Enter to do...">
+            <button id="add">Add</button>
+           
+        </div>
+        <div class="item-container">
+            <div class="items">
+                <h3>Apple</h3>
+                <div class="item-btn">
+                    <button>Edit</button>
+                    <button id="remove" onclick="removeBtn()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+    <script>
+
+        let inputBox = document.getElementById('input-box');
+        let itemList = document.getElementById('itemList');
+
+        // liste to click button
+        let addItem = document.getElementById('add').addEventListener("click", () => {
+            let items = [];
+            let item = inputBox.value;
+            items.push(item);
+            console.log(items);
+            document.querySelector('h3').innerHTML = items;
+            inputBox.value = ""
+          
+
+        })
+
+        // remove the item 
+
+    const removeBtn = () =>{
+        
+    }
+
+
+
+
+    </script>
+</body>
+
+</html>

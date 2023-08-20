@@ -1,0 +1,45 @@
+body{
+    background-color: #fff1c1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    overflow: hidden;
+}
+.holi{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: holi 2s ease-in-out infinite;
+}
+.holi img{
+    width: 53vh;
+}
+@keyframes holi{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    25%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    50%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    75%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+   100%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+}
+h1{
+    font-size: 36px;
+    text-align: center;
+    color: #FF4081;
+    margin-top: 50px;
+}
+
+p{
+    text-align: center;
+    color: #4caf50;
+    margin-top: 20px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Happy Holi!</title>
+	<style type="text/css">
+		body {
+			background-color: #FFF1C1;
+			font-family: Arial, sans-serif;
+			font-size: 18px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.holi-image {
+			animation: holi-image 2s ease-in-out infinite;
+			margin-top: 50px;
+           
+		}
+        .holi-image  img{
+            width: 210px;
+        }
+
+		.holi-text {
+			font-size: 48px;
+			color: #FF4081;
+			text-align: center;
+			animation: holi-text 2s ease-in-out infinite;
+		}
+
+		.holi-message {
+			font-size: 24px;
+			color: #4CAF50;
+			text-align: center;
+			animation: holi-message 2s ease-in-out infinite;
+			margin-top: 20px;
+		}
+
+		@keyframes holi-image {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.2);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes holi-text {
+			0% {
+				transform: rotate(0deg);
+				text-shadow: 2px 2px #4CAF50;
+			}
+			50% {
+				transform: rotate(15deg);
+				text-shadow: 4px 4px #FF4081;
+			}
+			100% {
+				transform: rotate(0deg);
+				text-shadow: 2px 2px #4CAF50;
+			}
+		}
+
+		@keyframes holi-message {
+			0% {
+				transform: scale(1);
+				text-shadow: 1px 1px #FF4081;
+			}
+			50% {
+				transform: scale(1.2);
+				text-shadow: 2px 2px #4CAF50;
+			}
+			100% {
+				transform: scale(1);
+				text-shadow: 1px 1px #FF4081;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="holi-image">
+		<img src="holi.jpg" alt="Happy Holi image">
+	</div>
+	<div class="holi-text">Happy Holi!</div>
+	<div class="holi-message">May your life be filled with colors of happiness and joy.</div>
+</body>
+</html>

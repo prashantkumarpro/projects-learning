@@ -1,0 +1,63 @@
+* {
+
+    box-sizing: border-box;
+}
+
+.cal {
+
+    width: 300px;
+    height: 420px;
+    margin: auto;
+    /* auto, to horizonally center the element  */
+    background-color: rgb(31, 29, 29);
+    /* border: 2px solid red; */
+
+}
+
+.display {
+    width: 100%;
+    height: 70px;
+    margin: 0;
+    text-align: right;
+    font-size: 1.5rem;
+    background-color: rgb(36, 37, 37);
+    color: white;
+}
+
+#display {
+    width: 100%;
+    height: 70px;
+    text-align: right;
+    background-color: rgb(27, 29, 29);
+    color: white;
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: double rgb(73, 65, 65);
+    /* border-right: none;
+    border-left: none;
+    border-top: none; */
+}
+
+.row{
+    margin: 3px 2px 3px 4px;
+    padding: 3px 3px;
+
+}
+.row button {
+    height: 43px;
+    width: 63px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgb(35, 38, 41);
+    color: white;
+    outline: none;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    margin: 3px 3px;
+
+
+}

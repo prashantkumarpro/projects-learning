@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS position</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .box {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background: red;
+        color: white;
+    }
+    /* Relative positioning  */
+    #two {
+        position: relative;
+        top: 20px;
+        left: 20px;
+        background: blue;
+    }
+
+    /* for position absolute */
+.main-element {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background-color: yellow;
+    padding: 10px;
+}
+
+.parent-element {
+    position: relative;
+    height: 100px;
+    padding: 10px;
+    background-color: #81adc8;
+}
+
+.sibling-element {
+	background: #f2f2f2;
+	padding: 10px;
+    border: 1px solid #81adc8;
+} 
+
+</style>
+
+<body>
+    <!-- Relative positioning -->
+<h1>Relative positioning </h1>
+    <div class="box" id="one">One</div>
+    <div class="box" id="two">Two</div>
+    <div class="box" id="three">Three</div>
+    <div class="box" id="four">Four</div>
+    <hr>
+<h1>Absolute</h1>
+<html>
+	<body>
+        <div class="parent-element">
+            <div class="sibling-element">
+                I'm the other sibling element.
+            </div>
+            
+            <div class="main-element">
+                All eyes on me. I am the main element.
+            </div>
+            
+            <div class="sibling-element">
+                I'm the other sibling element.
+            </div>
+        </div>
+    </body>
+<html>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /*CSS margin: create space arounde elements, outside of any defined borders*/
+
+    /* CSS padding: create space around an element's content, inside of any defined border*/
+}
+
+body {
+    background-color: #8b5ceb;
+}
+
+.wrapper {
+    position: absolute;
+    width: 90vmin;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+
+}
+
+.container {
+    /* margin: 25px auto;
+    width: 556px;
+    height: 600px; */
+    /* border: 2px dashed red; */
+    background-color: #ffffff;
+    padding: 50px 30px 80px 30px;
+    border-radius: 8px;
+
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 18px;
+    color: #0e101a;
+}
+
+h2 {
+    /* border: 2px dotted yellow; */
+    margin: 40px 100px 40px 100px;
+    /* margin top 40px, right 100px, bottom 40px , and left 100px*/
+
+    /* margin-left: 100px;
+   margin-right: 100px;
+   margin-top: 150px;
+   margin-bottom: 120px; */
+    padding: 2px 4px 6px 8px;
+    text-align: center;
+    font-size: 34px;
+    background-color: dodgerblue;
+    color: white;
+    font-family: monospace;
+
+
+
+}
+
+
+
+/* #word-display {
+    width: 100%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 11px;
+    resize: none;
+    border: 2px solid rgb(209, 211, 208);
+} */
+
+#btn {
+    /* padding: 13px 18px;
+    margin: auto;
+    border-radius: 14px 12px; */
+    padding: 12px 16px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-color: rgb(226, 155, 97);
+    color:#fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tbutn {
+    /* background-color: #000000;
+    width: 80%;
+    padding: 10px ;
+    position: relative;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: #0e101a; */
+
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 1px;
+}
+
+.got-res {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 100;
+    background-color: #e7b558;
+    width: 80%;
+    padding: 2px;
+    justify-content: space-around;
+    border-radius: 5px;
+
+}
+.Words{
+    margin: 10px auto;
+
+    
+}
+.Chars{
+    margin:10px auto;
+}

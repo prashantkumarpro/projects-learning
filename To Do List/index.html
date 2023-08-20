@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<style>
+    input {
+        width: 300px;
+        height: 60px;
+        font-size: 1.5rem;
+        color: #fff;
+        background-color: #312d2d;
+        border-radius: 6px;
+        height: 66px;
+    }
+
+    button {
+        padding: 25px 38px;
+        border-radius: 7px;
+    }
+    ul{
+        background-color: #fff;
+        border: 1px solid black;
+        width: 333px;
+        padding: 12px 18px;
+    }
+</style>
+
+<body>
+    <h1>To Do List Using HTML, CSS and JavaScript</h1>
+    <input type="text" id="taskInput" placeholder="Enter your task.....">
+    <button onclick="addTask()">Add</button>
+
+    <div class="task">
+        <ul id="taskList">
+
+        </ul>
+    </div>
+    
+
+    <script>
+
+        // first try
+        // function addTask() {
+        //     let taskInput = document.getElementById('taskInput').value;
+        //     // Create list element
+        //     let Item = document.createElement('li');
+        //     Item.innerHTML = taskInput;
+        //     // append to ul
+        //     document.querySelector('ul').appendChild(Item);
+        //      taskInput.value = ""
+        // }
+
+
+        // let itemList = ["HTML", "CSS", "JavaScript"];
+
+        // second try
+        // function addTask (){
+        //     let taskInput = document.getElementById('taskInput');
+        //     let taskList = document.getElementById('taskList');
+        //     let newTask = document.createElement('li');
+        //     newTask.innerHTML = taskInput.value;
+        //     taskList.appendChild(newTask);
+        //     taskInput.value = '';
+        // }
+
+
+        // third try 
+        function addTask() {
+            let inputArray = ["HTML", "CDD"];
+            let itemList = document.getElementById('taskList');
+            let inputTask = document.getElementById('taskInput');
+            // let item = inputTask.value;
+            // let task = inputArray.push(item);
+            let newItem = document.createElement('li');
+            console.log(newItem)
+            newItem.innerHTML = inputTask.value;
+            itemList.appendChild(newItem)
+            inputTask.value = '';
+            // if(!inputArray == ""){
+            //    let newItem =  document.createElement('li');
+            //    newItem.innerHTML = task;
+            //    itemList.appendChild(newItem);
+
+            // }
+
+            // console.log(item);
+        }
+
+// Fourth try
+
+
+    </script>
+</body>
+
+</html>
